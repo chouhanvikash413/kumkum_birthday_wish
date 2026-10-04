@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#120b1c">
+  <meta name="description" content="A beautiful interactive birthday surprise.">
+  <title>Birthday Surprise ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader" class="loader" aria-label="Loading birthday surprise">
+    <div class="loader-heart">♥</div>
+    <p>Preparing a little surprise... <span>❤️</span></p>
+    <div class="loader-line"><i></i></div>
+  </div>
+
+  <div id="ambient" class="ambient" aria-hidden="true"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <header class="topbar" id="topbar">
+    <button class="brand" id="brandBtn" aria-label="Return to beginning">♡</button>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="controls">
+      <button id="musicBtn" class="icon-btn" aria-label="Play music">♫</button>
+      <button id="muteBtn" class="icon-btn" aria-label="Mute music">🔊</button>
+    </div>
+  </header>
+
+  <main id="experience">
+    <!-- PAGE 1 -->
+    <section class="page hero-page active" data-page="0" aria-labelledby="heroTitle">
+      <div class="orb orb-a"></div><div class="orb orb-b"></div>
+      <div class="hero-content">
+        <span class="eyebrow reveal">A little surprise, made with love</span>
+        <h1 id="heroTitle" class="display reveal delay-1">Happy Birthday <span>🎂</span></h1>
+        <p class="hero-sub reveal delay-2">To the most special person in my life <b>❤️</b></p>
+
+        <div class="cake-mini reveal delay-3" id="heroCake" aria-label="Birthday cake">
+          <div class="mini-flame"></div>
+          <div class="mini-candle"></div>
+          <div class="mini-icing"></div>
+          <div class="mini-tier top"></div>
+          <div class="mini-tier bottom"></div>
+        </div>
+
+        <button class="primary-btn reveal delay-4" id="openSurprise">
+          <span>Open Your Surprise</span><strong>🎁</strong>
+        </button>
+        <p class="hint reveal delay-4">Tap to begin the celebration</p>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page name-page" data-page="1" aria-labelledby="nameTitle">
+      <div class="section-inner center">
+        <span class="eyebrow">Today is all about you</span>
+        <h2 id="nameTitle" class="display">Happy Birthday, <span class="person-name">NAME</span> <em>❤️</em></h2>
+        <p class="lead">One beautiful day. One unforgettable person. One very special celebration.</p>
+        <button class="ghost-btn next-btn">Continue the surprise <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page message-page" data-page="2" aria-labelledby="messageTitle">
+      <div class="section-inner narrow">
+        <div class="section-heading">
+          <span class="eyebrow">A message from the heart</span>
+          <h2 id="messageTitle">For <span class="person-name">NAME</span> ✨</h2>
+        </div>
+        <article class="glass-card message-card">
+          <div class="quote-mark">“</div>
+          <p id="birthdayMessage"></p>
+          <div class="signature">With love,<br><span id="senderName">YOUR NAME</span> ❤️</div>
+        </article>
+        <button class="ghost-btn next-btn">There’s more <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page photos-page" data-page="3" aria-labelledby="photosTitle">
+      <div class="section-inner wide">
+        <div class="section-heading center">
+          <span class="eyebrow">Little moments</span>
+          <h2 id="photosTitle">Captured memories 📸</h2>
+        </div>
+        <div class="photo-carousel" id="photoCarousel">
+          <button class="carousel-btn prev" aria-label="Previous photo">‹</button>
+          <div class="photo-track" id="photoTrack"></div>
+          <button class="carousel-btn next" aria-label="Next photo">›</button>
+        </div>
+        <div class="dots" id="photoDots" aria-label="Photo navigation"></div>
+        <button class="ghost-btn next-btn">Walk through our memories <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="page memories-page" data-page="4" aria-labelledby="memoriesTitle">
+      <div class="section-inner wide">
+        <div class="section-heading">
+          <span class="eyebrow">The moments that matter</span>
+          <h2 id="memoriesTitle">Our Beautiful Memories ✨</h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <article class="memory-card reveal-on-scroll">
+            <span class="memory-date">01 · First chapter</span><h3>The beginning</h3>
+            <p>Some of the most beautiful stories begin quietly, then become impossible to forget.</p>
+          </article>
+          <article class="memory-card reveal-on-scroll">
+            <span class="memory-date">02 · Favorite day</span><h3>A moment to remember</h3>
+            <p>Smiles, silly conversations and memories that somehow became our favorites.</p>
+          </article>
+          <article class="memory-card reveal-on-scroll">
+            <span class="memory-date">03 · Forever growing</span><h3>More to come</h3>
+            <p>The best part of memories is knowing there are still so many beautiful ones ahead.</p>
+          </article>
+          <article class="memory-card reveal-on-scroll">
+            <span class="memory-date">04 · Today</span><h3>Your special day</h3>
+            <p>Today deserves to be remembered too—because you deserve to be celebrated.</p>
+          </article>
+        </div>
+        <button class="ghost-btn next-btn">One more surprise <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page gift-page" data-page="5" aria-labelledby="giftTitle">
+      <div class="section-inner center">
+        <span class="eyebrow">Just when you thought it was over...</span>
+        <h2 id="giftTitle">There’s one more surprise... 🎁</h2>
+        <button id="gift" class="gift" aria-label="Open your surprise gift">
+          <span class="gift-lid"></span><span class="gift-box"></span><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span>
+        </button>
+        <p id="giftHint" class="hint">Tap the gift to open it</p>
+        <div id="giftMessage" class="surprise-message">You deserve all the happiness in the world! ❤️</div>
+        <button class="ghost-btn next-btn gift-next">Keep going <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 7 -->
+    <section class="page cake-page" data-page="6" aria-labelledby="cakeTitle">
+      <div class="section-inner center">
+        <span class="eyebrow">Make a wish</span>
+        <h2 id="cakeTitle">One last candle for you ✨</h2>
+        <div id="bigCake" class="big-cake" role="button" tabindex="0" aria-label="Click the candles to blow them out">
+          <div class="flames">
+            <i></i><i></i><i></i>
+          </div>
+          <div class="candles"><i></i><i></i><i></i></div>
+          <div class="icing icing-top"></div>
+          <div class="cake-tier cake-top"></div>
+          <div class="cake-tier cake-bottom"></div>
+          <div class="plate"></div>
+        </div>
+        <div id="wishMessage" class="wish-message">Click the candles and make a wish! 🕯️</div>
+        <button class="ghost-btn next-btn">See your final message <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- PAGE 8 -->
+    <section class="page final-page" data-page="7" aria-labelledby="finalTitle">
+      <div class="final-glow"></div>
+      <div class="section-inner center">
+        <span class="eyebrow">And from the heart...</span>
+        <h2 id="finalTitle" class="display">Once again,<br><span>HAPPY BIRTHDAY</span> ❤️🎂</h2>
+        <p class="final-copy">May this year bring you countless reasons to smile, beautiful moments to remember, and dreams that come true.</p>
+        <p class="final-sign">Always wishing the best for you,<br><strong id="finalSender">YOUR NAME</strong></p>
+        <button id="replay" class="primary-btn"><span>Replay Surprise</span><strong>🔄</strong></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="page-nav" id="pageNav" aria-label="Surprise navigation"></div>
+  <audio id="birthdayAudio" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
